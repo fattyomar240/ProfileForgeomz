@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold
+           transition-all duration-200 focus:outline-none focus-visible:ring-2
+           focus-visible:ring-offset-2 focus-visible:ring-brand-500 disabled:opacity-50
+           disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-slate-900 text-white shadow-sm hover:bg-slate-800
+           active:scale-[0.98] hover:shadow-md;
+  }
+  .btn-secondary {
+    @apply btn border border-slate-300 bg-white text-slate-700 hover:border-slate-400
+           hover:bg-slate-50 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900
+           placeholder:text-slate-400 transition-all duration-200
+           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20;
+  }
+  .input-error {
+    @apply border-error-400 focus:border-error-400 focus:ring-error-400/20;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-slate-700;
+  }
+  .helper {
+    @apply mt-1.5 text-xs text-slate-500;
+  }
+  .error-text {
+    @apply mt-1.5 text-xs font-medium text-error-600;
+  }
+
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out both;
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .stagger > * {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .stagger > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger > *:nth-child(2) { animation-delay: 0.10s; }
+  .stagger > *:nth-child(3) { animation-delay: 0.15s; }
+  .stagger > *:nth-child(4) { animation-delay: 0.20s; }
+  .stagger > *:nth-child(5) { animation-delay: 0.25s; }
+  .stagger > *:nth-child(6) { animation-delay: 0.30s; }
+  .stagger > *:nth-child(7) { animation-delay: 0.35s; }
+  .stagger > *:nth-child(8) { animation-delay: 0.40s; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
